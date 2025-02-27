@@ -51,7 +51,7 @@ const Navbhar = () => {
 const Navcontainer = styled.div`
   background-color: black;
   padding: 0.1rem;
-  position: sticky;
+  /* position: sticky; */
 
   .ul {
     overflow: auto;

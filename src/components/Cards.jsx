@@ -3,6 +3,7 @@ import styled from "styled-components";
 import Img from "../Asset/oops.png";
 import Loader from "./Loader";
 
+
 const Cards = ({ heading, category, country, pagesize }) => {
   const [api, setApi] = useState(null);
   const [page, setPage] = useState(1);
@@ -12,7 +13,7 @@ const Cards = ({ heading, category, country, pagesize }) => {
   useEffect(() => {
     setLoader(true);
     fetch(
-      `http://newsapi.org/v2/top-headlines?country=${country}&category=${category}&apiKey=???????&page=3&pageSize=${pagesize}`
+      `https://newsapi.org/v2/top-headlines?country=${country}&category=${category}&apiKey=921db66a76ab4bb4a05dee3d5c030ae4&page=3&pageSize=${pagesize}`
     )
       .then((response) => response.json())
       .then((data) => {
@@ -22,16 +23,17 @@ const Cards = ({ heading, category, country, pagesize }) => {
       })
       .catch((error) => console.log(error));
   }, [heading, country, category, pagesize, pageTotal]);
-
+  // https://newsapi.org/v2/top-headlines?country=us&apiKey=921db66a76ab4bb4a05dee3d5c030ae4
   const handlePrevClick = async () => {
     setLoader(true);
     await fetch(
-      `http://newsapi.org/v2/top-headlines?country=${country}&category=${category}&apiKey=?????????&page=${
+      `https://newsapi.org/v2/top-headlines?country=${country}&category=${category}&apiKey=921db66a76ab4bb4a05dee3d5c030ae4&page=${
         page - 1
       }&pageSize=${pagesize}`
     )
       .then((response) => response.json())
       .then((data) => {
+        console.log(data.articles);
         setApi(data.articles);
         setPage(page - 1);
 
@@ -43,7 +45,7 @@ const Cards = ({ heading, category, country, pagesize }) => {
   const handleNextClick = async () => {
     setLoader(true);
     await fetch(
-      `http://newsapi.org/v2/top-headlines?country=${country}&category=${category}&apiKey=?????????&page=${
+      `https://newsapi.org/v2/top-headlines?country=${country}&category=${category}&apiKey=921db66a76ab4bb4a05dee3d5c030ae4&page=${
         page + 1
       }&pageSize=${pagesize}`
     )
